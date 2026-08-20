@@ -14,7 +14,7 @@
     header{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.96);border-bottom:1px solid #e5eee9}
     nav{height:72px;display:flex;align-items:center;justify-content:space-between}
     .brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:20px;color:var(--dark)}
-    .logo{width:42px;height:42px;border-radius:12px;background:var(--green);color:#fff;display:grid;place-items:center;font-size:25px}
+    .logo{width:48px;height:48px;border-radius:10px;background:#fff;display:grid;place-items:center;overflow:hidden;border:1px solid #e4eee9}.logo img{width:100%;height:100%;object-fit:contain}
     .navlinks{display:flex;gap:24px;font-size:14px;color:#405b52}
     .navlinks a:hover{color:var(--green)}
     .navbtn{background:var(--green);color:#fff!important;padding:10px 15px;border-radius:9px}
@@ -28,7 +28,7 @@
     .primary{background:var(--green);color:#fff;border-color:var(--green)}
     .secondary{background:#fff}
     .hero-card{background:#fff;border-radius:24px;padding:30px;box-shadow:var(--shadow);border:1px solid #e4efe9}
-    .cross{font-size:70px;color:var(--green);text-align:center;margin-bottom:15px}
+    .hero-logo{text-align:center;margin-bottom:15px}.hero-logo img{width:min(260px,80%);height:auto;max-height:220px;object-fit:contain}
     .hero-card h3{text-align:center;margin-bottom:8px}
     .hero-card p{text-align:center;color:var(--muted);font-size:14px}
     section{padding:70px 0}
@@ -65,7 +65,7 @@
 <body>
 <header>
   <nav class="container">
-    <a class="brand" href="#"><span class="logo">✚</span> Sanjeevani Pharmacy</a>
+    <a class="brand" href="#"><span class="logo"><img src="logo.png" alt="Sanjeevani Pharmacy logo"></span> Sanjeevani Pharmacy</a>
     <div class="navlinks">
       <a href="#services">Services</a>
       <a href="#categories">Medicines</a>
@@ -89,7 +89,7 @@
         <p class="note">Prescription medicines are supplied subject to a valid prescription and applicable laws.</p>
       </div>
       <div class="hero-card">
-        <div class="cross">✚</div>
+        <div class="hero-logo"><img src="logo.png" alt="Sanjeevani Pharmacy logo"></div>
         <h3>Sanjeevani Pharmacy</h3>
         <p>Medicines • Health Essentials • Pharmacy Services</p>
       </div>
@@ -149,7 +149,7 @@
     <div class="container">
       <div class="section-head">
         <h2>Visit or Contact Us</h2>
-        <p>Replace the placeholder location below with your exact Google Maps link before publishing.</p>
+        <p>Visit Sanjeevani Pharmacy in Mansarover Park, Shahdara, Delhi.</p>
       </div>
       <div class="location">
         <div class="card">
@@ -163,8 +163,9 @@
         </div>
         <div class="mapbox">
           <div>
-            <strong>Google Maps</strong>
-            <p style="margin-top:6px">Add your exact Google Business Profile / Maps URL here.</p>
+            <strong>Find us on Google Maps</strong>
+            <p style="margin-top:6px">Get directions to Sanjeevani Pharmacy.</p>
+            <a class="btn primary" style="margin-top:14px" href="https://share.google/nyanAWFi2kf9BAGmP" target="_blank" rel="noopener">📍 Open Google Maps</a>
           </div>
         </div>
       </div>

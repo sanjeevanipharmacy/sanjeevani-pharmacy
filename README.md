@@ -15,3 +15,7 @@
 - Replace the Google Maps placeholder with the pharmacy's exact Google Maps URL.
 - Update delivery, discount, BP/sugar testing and opening-hours claims to match your current offers.
 - Add your logo if desired.
+
+
+## Logo and map
+The site uses `logo.png` from the provided Sanjeevani Pharmacy logo and includes the supplied Google Maps share link.
