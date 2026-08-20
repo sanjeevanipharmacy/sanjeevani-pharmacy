@@ -14,6 +14,81 @@ header{position:sticky;top:0;z-index:30;background:#fff;border-bottom:1px solid 
 .strip{background:var(--d);color:#fff;padding:12px 0}.strip .container{display:flex;justify-content:center;gap:20px;flex-wrap:wrap;font-weight:800;font-size:14px}
 section{padding:68px 0}.head{text-align:center;max-width:720px;margin:0 auto 36px}.head h2{font-size:34px;margin-bottom:7px}.head p{color:var(--muted)}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.card,.offer,.contact-card{border:1px solid var(--line);border-radius:16px;padding:24px;background:#fff}.icon{font-size:30px;margin-bottom:8px}.card p,.offer p,.contact-card p{color:var(--muted);font-size:14px}
 .offers{background:#fffaf0}.offer-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.offer strong{font-size:22px;color:var(--d);display:block;margin-bottom:5px}.delivery{background:var(--pale)}.delivery-grid,.order-grid,.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}.delivery-card{border:1px solid var(--line);border-radius:18px;padding:26px;background:#fff}.delivery-card p{color:var(--muted);font-size:14px;margin:6px 0}.order{background:var(--d);color:#fff}.order p{color:#d5eee6;margin:9px 0 22px}.form{background:#fff;color:var(--ink);padding:25px;border-radius:18px}.form label{display:block;font-size:13px;font-weight:800;margin-bottom:5px}.form input,.form textarea{width:100%;padding:12px;border:1px solid #d7e6e0;border-radius:9px;margin-bottom:13px;font:inherit}.form textarea{min-height:95px}.form button{width:100%;cursor:pointer}.hours{border-top:1px solid var(--line);margin-top:17px;padding-top:17px}.map-card{background:linear-gradient(145deg,#effaf5,#fff)}.float-wa{position:fixed;right:18px;bottom:18px;z-index:40;background:#25D366;color:#fff;border-radius:999px;padding:14px 18px;font-weight:800;box-shadow:0 10px 25px #0003}footer{background:#063d2e;color:#d9eee7;padding:30px 0}.footer{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}footer small{color:#a7cfc2}
+
+/* Subtle motion: designed to feel professional, not distracting */
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(24px)}
+  to{opacity:1;transform:translateY(0)}
+}
+@keyframes floatLogo{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-8px)}
+}
+@keyframes softPulse{
+  0%,100%{box-shadow:0 10px 25px rgba(0,0,0,.18)}
+  50%{box-shadow:0 12px 30px rgba(37,211,102,.30)}
+}
+@keyframes shimmer{
+  0%{transform:translateX(-120%)}
+  100%{transform:translateX(120%)}
+}
+.hero .eyebrow{animation:fadeUp .7s ease both}
+.hero h1{animation:fadeUp .7s .08s ease both}
+.hero p{animation:fadeUp .7s .16s ease both}
+.hero .actions{animation:fadeUp .7s .24s ease both}
+.hero .quick{animation:fadeUp .7s .32s ease both}
+.hero-card{animation:fadeUp .8s .15s ease both}
+.hero-card img{animation:floatLogo 4s ease-in-out infinite}
+.strip span{display:inline-block;animation:fadeUp .6s ease both}
+.strip span:nth-child(2){animation-delay:.08s}
+.strip span:nth-child(3){animation-delay:.16s}
+.strip span:nth-child(4){animation-delay:.24s}
+
+.reveal{
+  opacity:0;
+  transform:translateY(28px);
+  transition:opacity .7s ease,transform .7s ease;
+}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+.card,.offer,.delivery-card,.contact-card{
+  transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease;
+}
+.card:hover,.offer:hover,.delivery-card:hover,.contact-card:hover{
+  transform:translateY(-6px);
+  box-shadow:0 14px 30px rgba(7,92,67,.10);
+  border-color:#c9e5dc;
+}
+.btn{
+  position:relative;
+  overflow:hidden;
+  transition:transform .2s ease,box-shadow .2s ease,background .2s ease;
+}
+.btn::after{
+  content:"";
+  position:absolute;
+  top:0;
+  left:-80%;
+  width:45%;
+  height:100%;
+  background:rgba(255,255,255,.22);
+  transform:skewX(-20deg);
+}
+.btn:hover::after{animation:shimmer .55s ease}
+.btn:hover{box-shadow:0 8px 18px rgba(7,92,67,.12)}
+.float-wa{animation:softPulse 2.4s ease-in-out infinite;transition:transform .2s ease}
+.float-wa:hover{transform:translateY(-4px) scale(1.03);animation:none}
+
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{
+    animation-duration:.01ms!important;
+    animation-iteration-count:1!important;
+    transition-duration:.01ms!important;
+    scroll-behavior:auto!important;
+  }
+  .reveal{opacity:1;transform:none}
+}
+
 @media(max-width:900px){.offer-grid{grid-template-columns:1fr 1fr}}@media(max-width:800px){.navlinks{display:none}.hero-grid,.delivery-grid,.order-grid,.contact-grid{grid-template-columns:1fr}.grid{grid-template-columns:1fr 1fr}.hero-card{order:-1}}@media(max-width:520px){.grid,.offer-grid{grid-template-columns:1fr}.quick{grid-template-columns:1fr}.strip .container{flex-direction:column;align-items:center;gap:4px}}
 </style>
 </head>
@@ -36,34 +111,54 @@ section{padding:68px 0}.head{text-align:center;max-width:720px;margin:0 auto 36p
 <div class="quick"><a href="https://maps.app.goo.gl/LJfRtN9AXSoEgi5FA" target="_blank">📍 Find Us</a><a href="https://wa.me/9711719561" target="_blank">💬 WhatsApp</a><a href="tel:+917807812113">📞 7807812113</a></div>
 </div><div class="hero-card"><img src="logo.png" alt="Sanjeevani Pharmacy"><p>Mansarover Park, Shahdara, Delhi</p></div></div></section>
 
-<section id="offers" class="offers"><div class="container"><div class="head"><h2>Current Pharmacy Offers</h2><p>Save on medicines and get simple health-check services at Sanjeevani Pharmacy.</p></div><div class="offer-grid">
-<div class="offer"><strong>20% OFF</strong><p>On branded medicines.</p></div><div class="offer"><strong>Up to 80% OFF</strong><p>On generic medicines.</p></div><div class="offer"><strong>FREE</strong><p>Blood pressure check.</p></div><div class="offer"><strong>₹10</strong><p>Blood sugar test.</p></div>
+<section id="offers" class="offers reveal"><div class="container"><div class="head"><h2>Current Pharmacy Offers</h2><p>Save on medicines and get simple health-check services at Sanjeevani Pharmacy.</p></div><div class="offer-grid">
+<div class="offer reveal"><strong>20% OFF</strong><p>On branded medicines.</p></div><div class="offer reveal"><strong>Up to 80% OFF</strong><p>On generic medicines.</p></div><div class="offer reveal"><strong>FREE</strong><p>Blood pressure check.</p></div><div class="offer reveal"><strong>₹10</strong><p>Blood sugar test.</p></div>
 </div></div></section>
 
-<section id="services"><div class="container"><div class="head"><h2>Our Services</h2><p>Convenient pharmacy support for your everyday healthcare needs.</p></div><div class="grid">
-<div class="card"><div class="icon">💊</div><h3>Medicine Orders</h3><p>Send your medicine list or prescription on WhatsApp to check availability.</p></div>
-<div class="card"><div class="icon">🚚</div><h3>Local Delivery</h3><p>Delivery within 1 km. Free above ₹500; ₹50 delivery charge below ₹500.</p></div>
-<div class="card"><div class="icon">📋</div><h3>Prescription Orders</h3><p>Send a clear prescription image directly on WhatsApp and we'll confirm availability.</p></div>
-<div class="card"><div class="icon">🩺</div><h3>Free BP Check</h3><p>Ask our pharmacy team about the current free blood-pressure checking service.</p></div>
-<div class="card"><div class="icon">🩸</div><h3>₹10 Sugar Test</h3><p>Blood-sugar testing available for ₹10 at the pharmacy.</p></div>
-<div class="card"><div class="icon">📍</div><h3>Easy Directions</h3><p>Open our Google Maps listing and get directions to the pharmacy.</p></div>
+<section id="services" class="reveal"><div class="container"><div class="head"><h2>Our Services</h2><p>Convenient pharmacy support for your everyday healthcare needs.</p></div><div class="grid">
+<div class="card reveal"><div class="icon">💊</div><h3>Medicine Orders</h3><p>Send your medicine list or prescription on WhatsApp to check availability.</p></div>
+<div class="card reveal"><div class="icon">🚚</div><h3>Local Delivery</h3><p>Delivery within 1 km. Free above ₹500; ₹50 delivery charge below ₹500.</p></div>
+<div class="card reveal"><div class="icon">📋</div><h3>Prescription Orders</h3><p>Send a clear prescription image directly on WhatsApp and we'll confirm availability.</p></div>
+<div class="card reveal"><div class="icon">🩺</div><h3>Free BP Check</h3><p>Ask our pharmacy team about the current free blood-pressure checking service.</p></div>
+<div class="card reveal"><div class="icon">🩸</div><h3>₹10 Sugar Test</h3><p>Blood-sugar testing available for ₹10 at the pharmacy.</p></div>
+<div class="card reveal"><div class="icon">📍</div><h3>Easy Directions</h3><p>Open our Google Maps listing and get directions to the pharmacy.</p></div>
 </div></div></section>
 
-<section class="delivery"><div class="container"><div class="head"><h2>Local Medicine Delivery</h2><p>Simple delivery terms for customers near Sanjeevani Pharmacy.</p></div><div class="delivery-grid">
-<div class="delivery-card"><h3>🚚 Delivery Area</h3><p><strong>Radius:</strong> Up to 1 km from the pharmacy.</p><p><strong>Free delivery:</strong> Orders of ₹500 or more.</p><p><strong>Below ₹500:</strong> ₹50 delivery charge.</p></div>
-<div class="delivery-card"><h3>📱 How to Order</h3><p>1. Send your medicine list or prescription on WhatsApp.</p><p>2. We'll confirm availability and order details.</p><p>3. We'll confirm delivery arrangements.</p><a class="btn primary" style="margin-top:12px" href="https://wa.me/9711719561?text=Hello%20Sanjeevani%20Pharmacy%2C%20I%20would%20like%20to%20order%20medicines%20for%20delivery." target="_blank">Order for Delivery</a></div>
+<section class="delivery reveal"><div class="container"><div class="head"><h2>Local Medicine Delivery</h2><p>Simple delivery terms for customers near Sanjeevani Pharmacy.</p></div><div class="delivery-grid">
+<div class="delivery-card reveal"><h3>🚚 Delivery Area</h3><p><strong>Radius:</strong> Up to 1 km from the pharmacy.</p><p><strong>Free delivery:</strong> Orders of ₹500 or more.</p><p><strong>Below ₹500:</strong> ₹50 delivery charge.</p></div>
+<div class="delivery-card reveal"><h3>📱 How to Order</h3><p>1. Send your medicine list or prescription on WhatsApp.</p><p>2. We'll confirm availability and order details.</p><p>3. We'll confirm delivery arrangements.</p><a class="btn primary" style="margin-top:12px" href="https://wa.me/9711719561?text=Hello%20Sanjeevani%20Pharmacy%2C%20I%20would%20like%20to%20order%20medicines%20for%20delivery." target="_blank">Order for Delivery</a></div>
 </div></div></section>
 
-<section id="order" class="order"><div class="container order-grid"><div><h2>Have a prescription?</h2><p>Send your prescription or medicine list on WhatsApp. We'll check availability and guide you on the next step.</p><a class="btn outline" href="https://wa.me/9711719561?text=Hello%20Sanjeevani%20Pharmacy%2C%20I%20have%20a%20prescription%20and%20would%20like%20to%20check%20medicine%20availability." target="_blank">📋 Send Prescription on WhatsApp</a><p style="font-size:12px;margin-top:12px">Please send a clear, readable prescription image. Prescription medicines are supplied against a valid prescription and applicable laws.</p></div>
+<section id="order" class="order reveal"><div class="container order-grid"><div><h2>Have a prescription?</h2><p>Send your prescription or medicine list on WhatsApp. We'll check availability and guide you on the next step.</p><a class="btn outline" href="https://wa.me/9711719561?text=Hello%20Sanjeevani%20Pharmacy%2C%20I%20have%20a%20prescription%20and%20would%20like%20to%20check%20medicine%20availability." target="_blank">📋 Send Prescription on WhatsApp</a><p style="font-size:12px;margin-top:12px">Please send a clear, readable prescription image. Prescription medicines are supplied against a valid prescription and applicable laws.</p></div>
 <form class="form" onsubmit="sendWhatsApp(event)"><label for="name">Your name</label><input id="name" required placeholder="Enter your name"><label for="medicines">Medicine / requirement</label><textarea id="medicines" required placeholder="Type medicine names or your requirement"></textarea><button class="btn primary" type="submit">Send Request on WhatsApp</button></form></div></section>
 
-<section id="contact"><div class="container"><div class="head"><h2>Visit Sanjeevani Pharmacy</h2><p>Mansarover Park, Shahdara, Delhi.</p></div><div class="contact-grid">
-<div class="contact-card"><h3>Contact & Opening Hours</h3><p style="margin-top:10px">📍 Mansarover Park, Shahdara, Delhi</p><p>📞 Calls: <a href="tel:+917807812113">7807812113</a></p><p>💬 WhatsApp Orders: <a href="https://wa.me/9711719561" target="_blank">9711719561</a></p><div class="hours"><strong>🕐 Monday–Sunday</strong><p>11:00 AM–3:00 PM</p><p>5:00 PM–11:00 PM</p></div><div class="actions" style="margin-top:20px"><a class="btn primary" href="tel:+917807812113">Call</a><a class="btn outline" href="https://wa.me/9711719561" target="_blank">WhatsApp</a></div></div>
+<section id="contact" class="reveal"><div class="container"><div class="head"><h2>Visit Sanjeevani Pharmacy</h2><p>Mansarover Park, Shahdara, Delhi.</p></div><div class="contact-grid">
+<div class="contact-card reveal"><h3>Contact & Opening Hours</h3><p style="margin-top:10px">📍 Mansarover Park, Shahdara, Delhi</p><p>📞 Calls: <a href="tel:+917807812113">7807812113</a></p><p>💬 WhatsApp Orders: <a href="https://wa.me/9711719561" target="_blank">9711719561</a></p><div class="hours"><strong>🕐 Monday–Sunday</strong><p>11:00 AM–3:00 PM</p><p>5:00 PM–11:00 PM</p></div><div class="actions" style="margin-top:20px"><a class="btn primary" href="tel:+917807812113">Call</a><a class="btn outline" href="https://wa.me/9711719561" target="_blank">WhatsApp</a></div></div>
 <div class="contact-card map-card"><div style="font-size:48px">📍</div><h3>Get Directions</h3><p style="margin:7px 0 18px">Open our Google Maps listing and get directions from your current location.</p><a class="btn dark" href="https://maps.app.goo.gl/LJfRtN9AXSoEgi5FA" target="_blank">Open Google Maps →</a></div>
 </div></div></section>
 </main>
 <a class="float-wa" href="https://wa.me/9711719561?text=Hello%20Sanjeevani%20Pharmacy%2C%20I%20would%20like%20to%20order%20medicines." target="_blank">💬 WhatsApp Order</a>
 <footer><div class="container footer"><div><strong>Sanjeevani Pharmacy</strong><br><small>Your trusted local pharmacy.</small></div><div><small>© 2026 Sanjeevani Pharmacy. All rights reserved.</small></div></div></footer>
+
+<script>
+(function(){
+  const items = document.querySelectorAll('.reveal');
+  if (!('IntersectionObserver' in window)) {
+    items.forEach(el => el.classList.add('visible'));
+    return;
+  }
+  const observer = new IntersectionObserver((entries, obs) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        obs.unobserve(entry.target);
+      }
+    });
+  }, {threshold: 0.12, rootMargin: '0px 0px -40px 0px'});
+  items.forEach(el => observer.observe(el));
+})();
+</script>
+
 <script>
 function sendWhatsApp(e){e.preventDefault();const n=document.getElementById('name').value.trim(),m=document.getElementById('medicines').value.trim();window.open('https://wa.me/9711719561?text='+encodeURIComponent(`Hello Sanjeevani Pharmacy, my name is ${n}. I would like to check: ${m}`),'_blank');}
 </script>
