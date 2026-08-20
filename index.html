@@ -16,6 +16,64 @@ section{padding:68px 0}.head{text-align:center;max-width:720px;margin:0 auto 36p
 .offers{background:#fffaf0}.offer-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.offer strong{font-size:22px;color:var(--d);display:block;margin-bottom:5px}.delivery{background:var(--pale)}.delivery-grid,.order-grid,.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}.delivery-card{border:1px solid var(--line);border-radius:18px;padding:26px;background:#fff}.delivery-card p{color:var(--muted);font-size:14px;margin:6px 0}.order{background:var(--d);color:#fff}.order p{color:#d5eee6;margin:9px 0 22px}.form{background:#fff;color:var(--ink);padding:25px;border-radius:18px}.form label{display:block;font-size:13px;font-weight:800;margin-bottom:5px}.form input,.form textarea{width:100%;padding:12px;border:1px solid #d7e6e0;border-radius:9px;margin-bottom:13px;font:inherit}.form textarea{min-height:95px}.form button{width:100%;cursor:pointer}.hours{border-top:1px solid var(--line);margin-top:17px;padding-top:17px}.map-card{background:linear-gradient(145deg,#effaf5,#fff)}.float-wa{position:fixed;right:18px;bottom:18px;z-index:40;background:#25D366;color:#fff;border-radius:999px;padding:14px 18px;font-weight:800;box-shadow:0 10px 25px #0003}footer{background:#063d2e;color:#d9eee7;padding:30px 0}.footer{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}footer small{color:#a7cfc2}
 
 /* Subtle motion: designed to feel professional, not distracting */
+/* Premium motion layer */
+@keyframes heroGlow{
+  0%,100%{transform:scale(1);opacity:.65}
+  50%{transform:scale(1.08);opacity:.9}
+}
+@keyframes iconPop{
+  0%{transform:scale(.85);opacity:.3}
+  70%{transform:scale(1.08)}
+  100%{transform:scale(1);opacity:1}
+}
+@keyframes numberRise{
+  from{opacity:0;transform:translateY(12px)}
+  to{opacity:1;transform:translateY(0)}
+}
+.hero{position:relative;overflow:hidden}
+.hero::before{
+  content:"";
+  position:absolute;
+  width:360px;height:360px;
+  right:-140px;top:-160px;
+  border-radius:50%;
+  background:rgba(8,127,91,.08);
+  animation:heroGlow 6s ease-in-out infinite;
+  pointer-events:none;
+}
+.hero-grid{position:relative;z-index:1}
+.offer strong{transition:transform .3s ease}
+.offer:hover strong{transform:translateY(-2px)}
+.card .icon,.delivery-card h3+*{transition:transform .3s ease}
+.card:hover .icon{animation:iconPop .45s ease both}
+.offer.reveal.visible strong,.contact-card.reveal.visible h3{
+  animation:numberRise .55s ease both;
+}
+.quick a{
+  transition:transform .2s ease,box-shadow .2s ease,background .2s ease;
+}
+.quick a:hover{
+  transform:translateY(-3px);
+  box-shadow:0 8px 18px rgba(7,92,67,.09);
+}
+.hero-card{
+  transition:transform .35s ease,box-shadow .35s ease;
+}
+.hero-card:hover{
+  transform:translateY(-5px) rotate(.2deg);
+  box-shadow:0 24px 55px rgba(7,92,67,.15);
+}
+
+.offer-grid .reveal:nth-child(2),.grid .reveal:nth-child(2),.trustgrid>div:nth-child(2){transition-delay:.08s}
+.offer-grid .reveal:nth-child(3),.grid .reveal:nth-child(3),.trustgrid>div:nth-child(3){transition-delay:.16s}
+.offer-grid .reveal:nth-child(4),.grid .reveal:nth-child(4),.trustgrid>div:nth-child(4){transition-delay:.24s}
+.grid .reveal:nth-child(5){transition-delay:.32s}
+.grid .reveal:nth-child(6){transition-delay:.40s}
+
+@media (prefers-reduced-motion: reduce){
+  .hero::before,.hero-card img,.float-wa{animation:none!important}
+}
+
 @keyframes fadeUp{
   from{opacity:0;transform:translateY(24px)}
   to{opacity:1;transform:translateY(0)}
@@ -88,6 +146,24 @@ section{padding:68px 0}.head{text-align:center;max-width:720px;margin:0 auto 36p
   }
   .reveal{opacity:1;transform:none}
 }
+
+
+.trustbar{padding:28px 0;background:#fff;border-bottom:1px solid var(--line)}
+.trustgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.trustgrid>div{
+  display:grid;grid-template-columns:34px 1fr;column-gap:9px;align-items:center;
+  padding:12px 14px;border:1px solid var(--line);border-radius:13px;
+  transition:transform .25s ease,box-shadow .25s ease;
+}
+.trustgrid>div:hover{transform:translateY(-3px);box-shadow:0 10px 22px rgba(7,92,67,.08)}
+.trusticon{
+  grid-row:1 / span 2;width:28px;height:28px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  background:#dff5ec;color:var(--d);font-weight:900;
+}
+.trustgrid strong{font-size:13px}.trustgrid small{font-size:11px;color:var(--muted)}
+@media(max-width:900px){.trustgrid{grid-template-columns:1fr 1fr}}
+@media(max-width:520px){.trustgrid{grid-template-columns:1fr}}
 
 @media(max-width:900px){.offer-grid{grid-template-columns:1fr 1fr}}@media(max-width:800px){.navlinks{display:none}.hero-grid,.delivery-grid,.order-grid,.contact-grid{grid-template-columns:1fr}.grid{grid-template-columns:1fr 1fr}.hero-card{order:-1}}@media(max-width:520px){.grid,.offer-grid{grid-template-columns:1fr}.quick{grid-template-columns:1fr}.strip .container{flex-direction:column;align-items:center;gap:4px}}
 </style>
